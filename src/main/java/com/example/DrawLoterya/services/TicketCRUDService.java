@@ -29,6 +29,7 @@ public class TicketCRUDService implements UserService<TicketDto> {
                 ticket.getUser().getEmail());
         return ticketDto;
     }
+
     public static Ticket mapToEntity(TicketDto ticketDto) {
         System.out.println("Метод mapToEntity в классе TicketCRUDService" + ticketDto);
         Ticket ticket = new Ticket();
