@@ -4,9 +4,10 @@ import com.example.DrawLoterya.model.Ticket;
 import com.example.DrawLoterya.repositories.TicketRepository;
 import com.example.DrawLoterya.repositories.UserRepository;
 import org.springframework.stereotype.Service;
+import org.springframework.ui.Model;
 
 @Service
-public class TicketCRUDService implements UserService<TicketDto> {
+public class TicketCRUDService {
     private final TicketRepository ticketRepository;
     private final UserRepository userRepository;
 
@@ -14,12 +15,10 @@ public class TicketCRUDService implements UserService<TicketDto> {
         this.ticketRepository = ticketRepository;
         this.userRepository = userRepository;
     }
-    @Override
     public void create(TicketDto ticketDto) {
         Ticket ticket = mapToEntity(ticketDto);
     }
     public static TicketDto mapToDto(Ticket ticket) {
-        System.out.println("Метод mapToDtoв классе TicketCRUDService" + ticket);
         TicketDto ticketDto = new TicketDto();
         ticketDto.setId(ticket.getId());
         ticketDto.setName(ticket.getName());
@@ -29,9 +28,8 @@ public class TicketCRUDService implements UserService<TicketDto> {
                 ticket.getUser().getEmail());
         return ticketDto;
     }
-
     public static Ticket mapToEntity(TicketDto ticketDto) {
-        System.out.println("Метод mapToEntity в классе TicketCRUDService" + ticketDto);
+        System.out.println("Метод mapToEntity в классе TicketCRUDService возращает: " + ticketDto);
         Ticket ticket = new Ticket();
         ticket.setId(ticketDto.getId());
         ticket.setName(ticketDto.getName());
@@ -39,12 +37,13 @@ public class TicketCRUDService implements UserService<TicketDto> {
         ticket.setDescription(ticketDto.getDescription());
         return ticket;
     }
-    @Override
+
     public void update(TicketDto ticketDto) {
         Ticket ticket = mapToEntity(ticketDto);
     }
-    @Override
-    public String get(String key) {
+
+
+    public String get(String email, Model model) {
         return null;
     }
 }
