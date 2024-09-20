@@ -27,7 +27,7 @@ public class RestController {
     public void updateInformationUser(@RequestParam("fioUser") String fioUser, @RequestParam("birthday") String birthday,
                                       @RequestParam("updateEmail") String email, @RequestParam("phone") String phoneUser,
                                       @RequestParam("telegram") String telegram, @RequestParam("vk") String vk) throws Exception {
-        updateInformationUser(fioUser, birthday, email, phoneUser, telegram, vk);
+        userCRUDService.update(fioUser, birthday, email, phoneUser, telegram, vk);
     }
 
     //alter table user modify column photo longblob

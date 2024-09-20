@@ -13,7 +13,7 @@ public class DefaultController {
     }
     @GetMapping("/")
     public String getMainPage() {
-     return "mainPage";
+        return "mainPage";
     }
 
     @GetMapping("/pageCurrentUser")
