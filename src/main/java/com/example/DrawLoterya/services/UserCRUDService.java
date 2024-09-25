@@ -6,6 +6,8 @@ import com.example.DrawLoterya.model.Ticket;
 import com.example.DrawLoterya.model.User;
 import com.example.DrawLoterya.repositories.UserRepository;
 import jdk.jshell.spi.ExecutionControl;
+import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.ui.Model;
 import org.springframework.web.multipart.MultipartFile;
@@ -83,6 +85,13 @@ public class UserCRUDService implements UserService<UserDto> {
         currentUser = user;
         userRepository.save(user);
     }
+
+    @Override
+    public ResponseEntity<byte[]> updateImage(String email) {
+        User user = userRepository.findById(email).get();
+        return ResponseEntity.ok().contentType(MediaType.IMAGE_JPEG).body(user.getPhoto());
+    }
+
     @Override
     public void loadImage(MultipartFile image) throws IOException {
         User user = userRepository.findByEmail(currentUser.getEmail());

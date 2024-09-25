@@ -6,7 +6,7 @@
 <body>
 <header>
     <div class="one_level_top">
-        <img src="assets/img/logotype.png" class="photo_logo">
+        <a href="/"><img src="assets/img/logotype.png" class="photo_logo" width="200px"></a>
     </div>
     <div class="two_level_top">
         <div class="text_for_winners"></div>
@@ -15,7 +15,7 @@
 
 <section>
     <form class="block_photo">
-        <img th:src="${'/image/'+userId}" id="image_photo" class="imagePhoto" name="file_user">
+        <img th:src="${'/image/'+updateEmail}" id="image_photo" class="imagePhoto" name="file_user">
         <input id="load_photo" class="load_photo" name="file" type="file" accept="image/*">
     </form>
     <div class="fio_user_view"><span th:text="${fioUser}">Фамилия Имя Отчество</span></div>

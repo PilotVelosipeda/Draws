@@ -1,11 +1,10 @@
 package com.example.DrawLoterya.controllers;
-
 import com.example.DrawLoterya.dto.UserDto;
+import com.example.DrawLoterya.model.User;
 import com.example.DrawLoterya.services.UserCRUDService;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.IOException;
@@ -34,5 +33,9 @@ public class RestController {
     @PostMapping("/addImage/")
     public void addImage(@RequestParam("file") MultipartFile image) throws IOException {
         userCRUDService.loadImage(image);
+    }
+    @GetMapping("/image/{email}")
+    public ResponseEntity<byte[]> updateInformationUser(@PathVariable String email) {
+        return userCRUDService.updateImage(email);
     }
 }
